@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملف إنجاز الأستاذة ابتسام الحربي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%);
+            min-height: 100vh;
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(236, 72, 153, 0.15);
+        }
+        
+        .section-content {
+            display: none;
+        }
+        
+        .section-content.active {
+            display: block !important;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-item {
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover {
+            background: rgba(236, 72, 153, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .nav-item.active {
+            background: linear-gradient(135deg, #ec4899, #be185d);
+            color: white;
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.1);
+            border: 2px solid #fce7f3;
+            margin-bottom: 20px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ec4899, #be185d);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #fce7f3;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #ec4899;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        }
+        
+        .success-message, .error-message {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 10000;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .success-message {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        
+        .error-message {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.8); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-lg border-b-4 border-pink-500">
+        <div class="container mx-auto px-6 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-6 space-x-reverse">
+                    <div class="w-24 h-24 bg-white border-4 border-pink-500 rounded-full flex items-center justify-center floating">
+                        <svg class="w-12 h-12 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-4xl font-bold text-gray-800">ملف إنجاز الأستاذة</h1>
+                        <h2 class="text-3xl font-semibold text-pink-600">ابتسام الحربي</h2>
+                        <p class="text-xl text-gray-600">مدرسة الثامنة الابتدائية للبنات بالمدينة المنورة</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full font-bold text-lg floating">
+                        العام الدراسي 1447هـ
+                    </div>
+                    <div class="text-sm text-gray-600 mt-3">الثلاثاء، ١١ صفر ١٤٤٧ هـ</div>
+                    <div class="text-sm text-gray-600">وزارة التعليم - المملكة العربية السعودية</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Navigation Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-2xl shadow-xl p-6 sticky top-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">محتويات الملف</h3>
+                    
+                    <!-- Admin Login Button -->
+                    <div class="mb-6 text-center">
+                        <button onclick="showAdminLogin()" id="loginBtn" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-lg">
+                            🔐 تسجيل دخول إداري
+                        </button>
+                        
+                        <!-- Admin Panel (Hidden by default) -->
+                        <div id="adminPanel" style="display: none;" class="mt-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-300">
+                            <h4 class="text-lg font-bold text-gray-800 mb-3">لوحة التحكم الإدارية</h4>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <button onclick="logout()" class="bg-red-500 text-white px-3 py-2 rounded hover:bg-red-600 transition-colors">
+                                    🔓 تسجيل خروج
+                                </button>
+                                <button onclick="addContent()" class="bg-pink-500 text-white px-3 py-2 rounded hover:bg-pink-600 transition-colors">
+                                    ➕ إضافة محتوى
+                                </button>
+                                <button onclick="editMode()" class="bg-purple-500 text-white px-3 py-2 rounded hover:bg-purple-600 transition-colors">
+                                    ✏️ تعديل المحتوى
+                                </button>
+                                <button onclick="deleteContent()" class="bg-red-600 text-white px-3 py-2 rounded hover:bg-red-700 transition-colors">
+                                    🗑️ حذف المحتوى
+                                </button>
+                                <button onclick="exportData()" class="bg-indigo-500 text-white px-3 py-2 rounded hover:bg-indigo-600 transition-colors col-span-2">
+                                    📤 تصدير البيانات
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Menu -->
+                    <nav class="space-y-2">
+                        <div onclick="showSection('biography')" class="nav-item active" id="nav-biography">
+                            👩‍🏫 السيرة الذاتية
+                        </div>
+                        <div onclick="showSection('vision')" class="nav-item" id="nav-vision">
+                            🌸 الرؤية والأهداف
+                        </div>
+                        <div onclick="showSection('worksheets')" class="nav-item" id="nav-worksheets">
+                            📚 أوراق العمل
+                        </div>
+                        <div onclick="showSection('students')" class="nav-item" id="nav-students">
+                            👭 أعمال الطالبات
+                        </div>
+                        <div onclick="showSection('tracking')" class="nav-item" id="nav-tracking">
+                            📊 كشوف المتابعة
+                        </div>
+                        <div onclick="showSection('weekly-plans')" class="nav-item" id="nav-weekly-plans">
+                            📅 الخطط الأسبوعية
+                        </div>
+                        <div onclick="showSection('schedule')" class="nav-item" id="nav-schedule">
+                            🕐 الجدول المدرسي
+                        </div>
+                        <div onclick="showSection('contact')" class="nav-item" id="nav-contact">
+                            💌 تواصل معنا
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <!-- Biography Section -->
+                <div id="biography" class="section-content active">
+                    <div class="content-card card-hover">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-4 border-pink-500 pb-4">
+                            👩‍🏫 السيرة الذاتية
+                        </h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
+                                        <span class="text-2xl">👩‍🏫</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-600">الاسم الكامل</p>
+                                        <p class="font-bold text-lg">ابتسام الحربي</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center">
+                                        <span class="text-2xl">🏫</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-600">المدرسة</p>
+                                        <p class="font-bold text-lg">مدرسة الثامنة الابتدائية للبنات</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                        <span class="text-2xl">🌍</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-600">التخصص</p>
+                                        <p class="font-bold text-lg">معلمة اللغة الإنجليزية</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                                        <span class="text-2xl">📧</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-600">البريد الإلكتروني</p>
+                                        <p class="font-bold text-lg">i.alharbi@edu.sa</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                        <span class="text-2xl">📱</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-600">رقم الجوال</p>
+                                        <p class="font-bold text-lg">+966 55 987 6543</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
+                                        <span class="text-2xl">📅</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-600">العام الدراسي</p>
+                                        <p class="font-bold text-lg">1447 هـ</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-6 bg-pink-50 rounded-xl border-r-4 border-pink-500">
+                            <h3 class="text-xl font-bold text-pink-800 mb-4">المؤهلات والإنجازات</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <span class="text-2xl">🎓</span>
+                                    <span class="text-gray-700 font-semibold">بكالوريوس اللغة الإنجليزية</span>
+                                </div>
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <span class="text-2xl">📜</span>
+                                    <span class="text-gray-700 font-semibold">دبلوم طرق تدريس اللغة الإنجليزية</span>
+                                </div>
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <span class="text-2xl">🏆</span>
+                                    <span class="text-gray-700 font-semibold">معلمة متميزة 2023</span>
+                                </div>
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <span class="text-2xl">💻</span>
+                                    <span class="text-gray-700 font-semibold">شهادة TESOL</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-gradient-to-br from-pink-500 to-pink-600 text-white rounded-xl p-6 text-center">
+                                <div class="text-3xl font-bold">10</div>
+                                <p class="mt-2">سنوات خبرة</p>
+                            </div>
+                            <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-xl p-6 text-center">
+                                <div class="text-3xl font-bold">450+</div>
+                                <p class="mt-2">طالبة تم تدريسهن</p>
+                            </div>
+                            <div class="bg-gradient-to-br from-rose-500 to-rose-600 text-white rounded-xl p-6 text-center">
+                                <div class="text-3xl font-bold">98%</div>
+                                <p class="mt-2">معدل النجاح</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision Section -->
+                <div id="vision" class="section-content">
+                    <div class="content-card card-hover">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-4 border-pink-500 pb-4">🌸 الرؤية والأهداف</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border-2 border-pink-200">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-4xl ml-4">🌟</span>
+                                    <h3 class="text-2xl font-bold text-pink-800">الرؤية</h3>
+                                </div>
+                                <p class="text-gray-700 leading-relaxed text-lg">
+                                    أن أكون معلمة مؤثرة ومبدعة في تدريس اللغة الإنجليزية، أساهم في بناء جيل من الطالبات المتميزات القادرات على التواصل بثقة وإبداع باللغة الإنجليزية.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border-2 border-purple-200">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-4xl ml-4">🎯</span>
+                                    <h3 class="text-2xl font-bold text-purple-800">الرسالة</h3>
+                                </div>
+                                <p class="text-gray-700 leading-relaxed text-lg">
+                                    تقديم تعليم نوعي متميز في اللغة الإنجليزية من خلال استخدام أساليب تدريس حديثة وتفاعلية، وخلق بيئة تعليمية محفزة تنمي مهارات التواصل.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">الأهداف التعليمية</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-white rounded-xl p-4 shadow-lg border-r-4 border-pink-500">
+                                    <h5 class="font-bold text-pink-800 mb-2">تحسين النطق</h5>
+                                    <p class="text-gray-700 text-sm">تحسين مهارات النطق لدى 95% من الطالبات</p>
+                                </div>
+                                <div class="bg-white rounded-xl p-4 shadow-lg border-r-4 border-purple-500">
+                                    <h5 class="font-bold text-purple-800 mb-2">مهارات الكتابة</h5>
+                                    <p class="text-gray-700 text-sm">تطوير مهارات الكتابة الإبداعية</p>
+                                </div>
+                                <div class="bg-white rounded-xl p-4 shadow-lg border-r-4 border-rose-500">
+                                    <h5 class="font-bold text-rose-800 mb-2">زيادة المشاركة</h5>
+                                    <p class="text-gray-700 text-sm">زيادة مشاركة الطالبات في الأنشطة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Worksheets Section -->
+                <div id="worksheets" class="section-content">
+                    <div class="content-card card-hover">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-4 border-pink-500 pb-4">📚 أوراق العمل</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-gradient-to-r from-pink-50 to-pink-100 rounded-xl p-6 border-r-4 border-pink-500">
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Grammar Basics</h3>
+                                <p class="text-gray-600 mb-4">أوراق عمل تفاعلية لتعليم قواعد اللغة الإنجليزية الأساسية</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-500">📅 15 نوفمبر 2024</span>
+                                    <button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors">تحميل</button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl p-6 border-r-4 border-purple-500">
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Vocabulary Building</h3>
+                                <p class="text-gray-600 mb-4">تمارين متنوعة لبناء المفردات وتطوير الحصيلة اللغوية</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-500">📅 12 نوفمبر 2024</span>
+                                    <button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors">تحميل</button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-rose-50 to-rose-100 rounded-xl p-6 border-r-4 border-rose-500">
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Reading Comprehension</h3>
+                                <p class="text-gray-600 mb-4">نصوص قرائية متدرجة مع أسئلة فهم واستيعاب</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-500">📅 10 نوفمبر 2024</span>
+                                    <button class="bg-rose-500 text-white px-4 py-2 rounded-lg hover:bg-rose-600 transition-colors">تحميل</button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-xl p-6 border-r-4 border-indigo-500">
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Creative Writing</h3>
+                                <p class="text-gray-600 mb-4">أنشطة الكتابة الإبداعية وتطوير مهارات التعبير</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-500">📅 8 نوفمبر 2024</span>
+                                    <button class="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors">تحميل</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Students Work Section -->
+                <div id="students" class="section-content">
+                    <div class="content-card card-hover">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-4 border-pink-500 pb-4">👭 أعمال الطالبات</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 border-pink-500">
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Creative Story Writing</h3>
+                                <p class="text-gray-600 mb-3">الطالبة: نورا أحمد السلمي - الصف الثاني الثانوي</p>
+                                <p class="text-gray-700 mb-4">قصة إبداعية باللغة الإنجليزية تتناول موضوع الصداقة والتعاون</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-pink-600 font-semibold">الدرجة: 98/100</span>
+                                    <button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors">عرض العمل</button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 border-purple-500">
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Poetry Presentation</h3>
+                                <p class="text-gray-600 mb-3">الطالبة: سارة محمد العتيبي - الصف الثالث الثانوي</p>
+                                <p class="text-gray-700 mb-4">عرض تقديمي متميز عن الشعر الإنجليزي الكلاسيكي</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-purple-600 font-semibold">الدرجة: 92/100</span>
+                                    <button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors">عرض العمل</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tracking Section -->
+                <div id="tracking" class="section-content">
+                    <div class="content-card card-hover">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-4 border-pink-500 pb-4">📊 كشوف المتابعة</h2>
+                        
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="bg-pink-500 text-white p-4 font-bold text-lg">
+                                كشف متابعة الطالبات - الفصل الدراسي الأول 1447
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-4 text-right font-bold">اسم الطالبة</th>
+                                            <th class="p-4 text-center font-bold">الصف</th>
+                                            <th class="p-4 text-center font-bold">الاستماع</th>
+                                            <th class="p-4 text-center font-bold">التحدث</th>
+                                            <th class="p-4 text-center font-bold">القراءة</th>
+                                            <th class="p-4 text-center font-bold">الكتابة</th>
+                                            <th class="p-4 text-center font-bold">التقدير العام</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b hover:bg-gray-50">
+                                            <td class="p-4 font-semibold">نورا أحمد السلمي</td>
+                                            <td class="p-4 text-center">الثاني الثانوي</td>
+                                            <td class="p-4 text-center"><span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-bold">متفوق</span></td>
+                                            <td class="p-4 text-center"><span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-bold">متقدم</span></td>
+                                            <td class="p-4 text-center"><span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-bold">متفوق</span></td>
+                                            <td class="p-4 text-center"><span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-bold">متقدم</span></td>
+                                            <td class="p-4 text-center"><span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-bold">متفوق</span></td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50">
+                                            <td class="p-4 font-semibold">سارة محمد العتيبي</td>
+                                            <td class="p-4 text-center">الثالث الثانوي</td>
+                                            <td class="p-4 text-center"><span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-bold">متقدم</span></td>
+                                            <td class="p-4 text-center"><span class="bg-rose-100 text-rose-800 px-3 py-1 rounded-full text-sm font-bold">متمكن</span></td>
+                                            <td class="p-4 text-center"><span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-bold">متقدم</span></td>
+                                            <td class="p-4 text-center"><span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-bold">متفوق</span></td>
+                                            <td class="p-4 text-center"><span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-bold">متقدم</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Plans Section -->
+                <div id="weekly-plans" class="section-content">
+                    <div class="content-card card-hover">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-4 border-pink-500 pb-4">📅 الخطط الأسبوعية</h2>
+                        
+                        <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl p-6 mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">خطة الأسبوع الأول</h3>
+                            <p class="text-gray-600 mb-4">من 15 صفر إلى 21 صفر 1447 هـ</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-pink-500">
+                                    <h4 class="font-bold text-pink-800 mb-2">الأحد - Unit 1: Greetings</h4>
+                                    <p class="text-sm text-gray-600">الهدف: تعلم التحيات الأساسية</p>
+                                    <p class="text-sm text-gray-600">النشاط: حوار تفاعلي</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-purple-500">
+                                    <h4 class="font-bold text-purple-800 mb-2">الاثنين - Unit 1: Introductions</h4>
+                                    <p class="text-sm text-gray-600">الهدف: التعريف بالنفس</p>
+                                    <p class="text-sm text-gray-600">النشاط: لعب الأدوار</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-rose-500">
+                                    <h4 class="font-bold text-rose-800 mb-2">الثلاثاء - Unit 1: Family</h4>
+                                    <p class="text-sm text-gray-600">الهدف: تعلم أسماء أفراد العائلة</p>
+                                    <p class="text-sm text-gray-600">النشاط: شجرة العائلة</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-indigo-500">
+                                    <h4 class="font-bold text-indigo-800 mb-2">الأربعاء - Unit 1: Numbers</h4>
+                                    <p class="text-sm text-gray-600">الهدف: تعلم الأرقام من 1-20</p>
+                                    <p class="text-sm text-gray-600">النشاط: ألعاب الأرقام</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-green-500">
+                                    <h4 class="font-bold text-green-800 mb-2">الخميس - Unit 1: Colors</h4>
+                                    <p class="text-sm text-gray-600">الهدف: تعلم أسماء الألوان</p>
+                                    <p class="text-sm text-gray-600">النشاط: رسم وتلوين</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-yellow-500">
+                                    <h4 class="font-bold text-yellow-800 mb-2">مراجعة الأسبوع</h4>
+                                    <p class="text-sm text-gray-600">الهدف: مراجعة شاملة</p>
+                                    <p class="text-sm text-gray-600">النشاط: اختبار قصير</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">خطة الأسبوع الثاني</h3>
+                            <p class="text-gray-600 mb-4">من 22 صفر إلى 28 صفر 1447 هـ</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-blue-500">
+                                    <h4 class="font-bold text-blue-800 mb-2">الأحد - Unit 2: School</h4>
+                                    <p class="text-sm text-gray-600">الهدف: مفردات المدرسة</p>
+                                    <p class="text-sm text-gray-600">النشاط: جولة في المدرسة</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-teal-500">
+                                    <h4 class="font-bold text-teal-800 mb-2">الاثنين - Unit 2: Classroom</h4>
+                                    <p class="text-sm text-gray-600">الهدف: أدوات الفصل</p>
+                                    <p class="text-sm text-gray-600">النشاط: تسمية الأدوات</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-cyan-500">
+                                    <h4 class="font-bold text-cyan-800 mb-2">الثلاثاء - Unit 2: Subjects</h4>
+                                    <p class="text-sm text-gray-600">الهدف: أسماء المواد الدراسية</p>
+                                    <p class="text-sm text-gray-600">النشاط: جدول الحصص</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-emerald-500">
+                                    <h4 class="font-bold text-emerald-800 mb-2">الأربعاء - Unit 2: Time</h4>
+                                    <p class="text-sm text-gray-600">الهدف: قراءة الوقت</p>
+                                    <p class="text-sm text-gray-600">النشاط: ساعة تفاعلية</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-lime-500">
+                                    <h4 class="font-bold text-lime-800 mb-2">الخميس - Unit 2: Days</h4>
+                                    <p class="text-sm text-gray-600">الهدف: أيام الأسبوع</p>
+                                    <p class="text-sm text-gray-600">النشاط: تقويم الأسبوع</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border-r-4 border-orange-500">
+                                    <h4 class="font-bold text-orange-800 mb-2">مراجعة الأسبوع</h4>
+                                    <p class="text-sm text-gray-600">الهدف: مراجعة شاملة</p>
+                                    <p class="text-sm text-gray-600">النشاط: مشروع جماعي</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Section -->
+                <div id="schedule" class="section-content">
+                    <div class="content-card card-hover">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-4 border-pink-500 pb-4">🕐 الجدول المدرسي</h2>
+                        
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="bg-pink-500 text-white p-4 font-bold text-lg">
+                                الجدول المدرسي - العام الدراسي 1447 هـ
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-4 text-center font-bold">الحصة</th>
+                                            <th class="p-4 text-center font-bold">الأحد</th>
+                                            <th class="p-4 text-center font-bold">الاثنين</th>
+                                            <th class="p-4 text-center font-bold">الثلاثاء</th>
+                                            <th class="p-4 text-center font-bold">الأربعاء</th>
+                                            <th class="p-4 text-center font-bold">الخميس</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b hover:bg-gray-50">
+                                            <td class="p-4 text-center font-bold bg-pink-50">الأولى<br><span class="text-sm text-gray-600">7:30 - 8:15</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50">
+                                            <td class="p-4 text-center font-bold bg-pink-50">الثانية<br><span class="text-sm text-gray-600">8:15 - 9:00</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50">
+                                            <td class="p-4 text-center font-bold bg-pink-50">الثالثة<br><span class="text-sm text-gray-600">9:00 - 9:45</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50 bg-yellow-50">
+                                            <td class="p-4 text-center font-bold bg-yellow-100">الفسحة<br><span class="text-sm text-gray-600">9:45 - 10:15</span></td>
+                                            <td class="p-4 text-center text-yellow-700 font-semibold">استراحة</td>
+                                            <td class="p-4 text-center text-yellow-700 font-semibold">استراحة</td>
+                                            <td class="p-4 text-center text-yellow-700 font-semibold">استراحة</td>
+                                            <td class="p-4 text-center text-yellow-700 font-semibold">استراحة</td>
+                                            <td class="p-4 text-center text-yellow-700 font-semibold">استراحة</td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50">
+                                            <td class="p-4 text-center font-bold bg-pink-50">الرابعة<br><span class="text-sm text-gray-600">10:15 - 11:00</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50">
+                                            <td class="p-4 text-center font-bold bg-pink-50">الخامسة<br><span class="text-sm text-gray-600">11:00 - 11:45</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50">
+                                            <td class="p-4 text-center font-bold bg-pink-50">السادسة<br><span class="text-sm text-gray-600">11:45 - 12:30</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 2ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 3ث</span></td>
+                                            <td class="p-4 text-center">English<br><span class="text-sm text-pink-600">الصف 1ث</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div id="contact" class="section-content">
+                    <div class="content-card card-hover">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-4 border-pink-500 pb-4">💌 تواصل معنا</h2>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-6">معلومات التواصل</h3>
+                                <div class="space-y-6">
+                                    <div class="flex items-center space-x-4 space-x-reverse">
+                                        <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center">
+                                            <span class="text-2xl">📧</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-600">البريد الإلكتروني</p>
+                                            <p class="font-bold text-lg text-pink-600">i.alharbi@edu.sa</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-center space-x-4 space-x-reverse">
+                                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+                                            <span class="text-2xl">📱</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-600">رقم الجوال</p>
+                                            <p class="font-bold text-lg text-purple-600">+966 55 987 6543</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-6">أرسل رسالة</h3>
+                                <form class="space-y-4" onsubmit="sendMessage(event)">
+                                    <input type="text" class="form-input" placeholder="الاسم الكامل" required>
+                                    <input type="email" class="form-input" placeholder="البريد الإلكتروني" required>
+                                    <textarea class="form-input" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                                    <button type="submit" class="btn-primary w-full">💌 إرسال الرسالة</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 text-white py-12 mt-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- معلومات المعلمة -->
+                <div class="text-center md:text-right">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto md:mx-0 mb-4">
+                        <svg class="w-10 h-10 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">الأستاذة ابتسام الحربي</h3>
+                    <p class="text-pink-200">معلمة اللغة الإنجليزية</p>
+                    <p class="text-pink-200 text-sm mt-1">10 سنوات خبرة في التدريس</p>
+                </div>
+                
+                <!-- معلومات المدرسة -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🏫</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">مدرسة الثامنة الابتدائية للبنات</h3>
+                    <p class="text-purple-200">المدينة المنورة</p>
+                    <p class="text-purple-200 text-sm mt-1">العام الدراسي 1447 هـ</p>
+                </div>
+                
+                <!-- معلومات التواصل -->
+                <div class="text-center md:text-left">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto md:mx-0 mb-4">
+                        <span class="text-3xl">📞</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">تواصل معنا</h3>
+                    <p class="text-indigo-200 text-sm">📧 i.alharbi@edu.sa</p>
+                    <p class="text-indigo-200 text-sm mt-1">📱 +966 55 987 6543</p>
+                </div>
+            </div>
+            
+            <!-- خط الفصل -->
+            <div class="border-t border-white/20 mt-8 pt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-center md:text-right mb-4 md:mb-0">
+                        <p class="text-lg font-semibold">ملف إنجاز الأستاذة ابتسام الحربي</p>
+                        <p class="text-sm text-gray-300">جميع الحقوق محفوظة © 2024</p>
+                    </div>
+                    
+                    <div class="text-center md:text-left">
+                        <div class="flex items-center justify-center md:justify-start space-x-2 space-x-reverse">
+                            <span class="text-2xl">🇸🇦</span>
+                            <div>
+                                <p class="text-sm font-semibold">وزارة التعليم</p>
+                                <p class="text-xs text-gray-300">المملكة العربية السعودية</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- شعار التميز -->
+            <div class="text-center mt-6">
+                <div class="inline-flex items-center space-x-2 space-x-reverse bg-white/10 rounded-full px-6 py-2">
+                    <span class="text-yellow-300 text-xl">⭐</span>
+                    <span class="text-sm font-semibold">معلمة متميزة - رؤية 2030</span>
+                    <span class="text-yellow-300 text-xl">⭐</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let isLoggedIn = false;
+        let editModeActive = false;
+        let deleteModeActive = false;
+
+        // Show section function
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav items
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Add active class to clicked nav item
+            const navItem = document.getElementById('nav-' + sectionId);
+            if (navItem) {
+                navItem.classList.add('active');
+            }
+        }
+
+        // Admin login function
+        function showAdminLogin() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: #1f2937; font-size: 24px; font-weight: bold;">🔐 تسجيل الدخول الإداري</h3>
+                    <input type="text" id="adminUsername" class="form-input" placeholder="اسم المستخدم" style="margin-bottom: 15px;">
+                    <input type="password" id="adminPassword" class="form-input" placeholder="كلمة المرور" style="margin-bottom: 20px;">
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="attemptLogin()" class="btn-primary" style="flex: 1;">تسجيل الدخول</button>
+                        <button onclick="closeLoginModal()" style="flex: 1; background: #ef4444; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">إلغاء</button>
+                    </div>
+                    <div style="margin-top: 15px; padding: 10px; background: #fdf2f8; border-radius: 8px; font-size: 14px; color: #be185d;">
+                        <strong>بيانات التجربة:</strong><br>
+                        اسم المستخدم: <code>admin</code><br>
+                        كلمة المرور: <code>1234</code>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            document.getElementById('adminUsername').focus();
+        }
+
+        // Attempt login function
+        function attemptLogin() {
+            const username = document.getElementById('adminUsername').value.trim();
+            const password = document.getElementById('adminPassword').value.trim();
+            
+            if (username === 'admin' && password === '1234') {
+                isLoggedIn = true;
+                document.getElementById('loginBtn').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                closeLoginModal();
+                showSuccessMessage('تم تسجيل الدخول بنجاح! مرحباً بك في النظام الإداري');
+            } else {
+                showErrorMessage('خطأ في اسم المستخدم أو كلمة المرور');
+                document.getElementById('adminPassword').value = '';
+            }
+        }
+
+        // Close login modal
+        function closeLoginModal() {
+            const modal = document.querySelector('.modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        // Logout function
+        function logout() {
+            isLoggedIn = false;
+            editModeActive = false;
+            deleteModeActive = false;
+            document.getElementById('loginBtn').style.display = 'block';
+            document.getElementById('adminPanel').style.display = 'none';
+            showSuccessMessage('تم تسجيل الخروج بنجاح!');
+        }
+
+        // Add content function
+        function addContent() {
+            if (!isLoggedIn) {
+                showErrorMessage('يجب تسجيل الدخول أولاً');
+                return;
+            }
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content" style="max-width: 600px; max-height: 90vh; overflow-y: auto;">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: #1f2937; font-size: 24px; font-weight: bold;">➕ إضافة محتوى جديد</h3>
+                    
+                    <select id="sectionType" class="form-input" onchange="updateContentOptions()" style="margin-bottom: 15px;">
+                        <option value="">اختر القسم</option>
+                        <option value="biography">السيرة الذاتية</option>
+                        <option value="vision">الرؤية والأهداف</option>
+                        <option value="worksheets">أوراق العمل</option>
+                        <option value="students">أعمال الطالبات</option>
+                        <option value="tracking">كشوف المتابعة</option>
+                        <option value="weekly-plans">الخطط الأسبوعية</option>
+                        <option value="schedule">الجدول المدرسي</option>
+                    </select>
+                    
+                    <select id="contentType" class="form-input" style="margin-bottom: 15px; display: none;">
+                        <option value="">اختر نوع المحتوى</option>
+                    </select>
+                    
+                    <div id="dynamicFields"></div>
+                    
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button onclick="saveNewContent()" class="btn-primary" style="flex: 1;">حفظ المحتوى</button>
+                        <button onclick="closeModal()" style="flex: 1; background: #ef4444; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">إلغاء</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Update content options based on selected section
+        function updateContentOptions() {
+            const sectionType = document.getElementById('sectionType').value;
+            const contentTypeSelect = document.getElementById('contentType');
+            const dynamicFields = document.getElementById('dynamicFields');
+            
+            contentTypeSelect.innerHTML = '<option value="">اختر نوع المحتوى</option>';
+            dynamicFields.innerHTML = '';
+            
+            if (!sectionType) {
+                contentTypeSelect.style.display = 'none';
+                return;
+            }
+            
+            contentTypeSelect.style.display = 'block';
+            
+            const options = {
+                'biography': [
+                    {value: 'qualification', text: 'مؤهل جديد'},
+                    {value: 'achievement', text: 'إنجاز جديد'},
+                    {value: 'experience', text: 'خبرة مهنية'},
+                    {value: 'contact-info', text: 'معلومات تواصل'}
+                ],
+                'vision': [
+                    {value: 'goal', text: 'هدف تعليمي جديد'},
+                    {value: 'strategy', text: 'استراتيجية تدريس'},
+                    {value: 'value', text: 'قيمة تربوية'}
+                ],
+                'worksheets': [
+                    {value: 'grammar', text: 'ورقة عمل قواعد'},
+                    {value: 'vocabulary', text: 'ورقة عمل مفردات'},
+                    {value: 'reading', text: 'ورقة عمل قراءة'},
+                    {value: 'writing', text: 'ورقة عمل كتابة'},
+                    {value: 'listening', text: 'ورقة عمل استماع'}
+                ],
+                'students': [
+                    {value: 'student-work', text: 'عمل طالبة جديد'},
+                    {value: 'project', text: 'مشروع طالبة'},
+                    {value: 'presentation', text: 'عرض تقديمي'}
+                ],
+                'tracking': [
+                    {value: 'new-student', text: 'طالبة جديدة'},
+                    {value: 'grade-update', text: 'تحديث درجات'},
+                    {value: 'skill-assessment', text: 'تقييم مهارة'}
+                ],
+                'weekly-plans': [
+                    {value: 'new-week', text: 'خطة أسبوع جديد'},
+                    {value: 'lesson-plan', text: 'خطة درس'},
+                    {value: 'activity', text: 'نشاط تعليمي'}
+                ],
+                'schedule': [
+                    {value: 'class-period', text: 'حصة جديدة'},
+                    {value: 'schedule-change', text: 'تعديل جدول'},
+                    {value: 'extra-activity', text: 'نشاط إضافي'}
+                ]
+            };
+            
+            if (options[sectionType]) {
+                options[sectionType].forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    contentTypeSelect.appendChild(optionElement);
+                });
+            }
+            
+            contentTypeSelect.onchange = generateDynamicFields;
+        }
+
+        // Generate dynamic fields based on content type
+        function generateDynamicFields() {
+            const sectionType = document.getElementById('sectionType').value;
+            const contentType = document.getElementById('contentType').value;
+            const dynamicFields = document.getElementById('dynamicFields');
+            
+            if (!contentType) {
+                dynamicFields.innerHTML = '';
+                return;
+            }
+            
+            let fieldsHTML = '';
+            
+            // Common fields for all types
+            fieldsHTML += '<input type="text" id="contentTitle" class="form-input" placeholder="العنوان" style="margin-bottom: 15px;">';
+            
+            // Specific fields based on content type
+            switch(contentType) {
+                case 'qualification':
+                case 'achievement':
+                case 'experience':
+                    fieldsHTML += '<input type="text" id="institution" class="form-input" placeholder="الجهة/المؤسسة" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<input type="date" id="achievementDate" class="form-input" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<textarea id="description" class="form-input" rows="3" placeholder="الوصف" style="margin-bottom: 15px;"></textarea>';
+                    break;
+                    
+                case 'contact-info':
+                    fieldsHTML += '<input type="email" id="email" class="form-input" placeholder="البريد الإلكتروني" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<input type="tel" id="phone" class="form-input" placeholder="رقم الهاتف" style="margin-bottom: 15px;">';
+                    break;
+                    
+                case 'goal':
+                case 'strategy':
+                case 'value':
+                    fieldsHTML += '<textarea id="description" class="form-input" rows="4" placeholder="الوصف التفصيلي" style="margin-bottom: 15px;"></textarea>';
+                    fieldsHTML += '<select id="priority" class="form-input" style="margin-bottom: 15px;"><option value="high">أولوية عالية</option><option value="medium">أولوية متوسطة</option><option value="low">أولوية منخفضة</option></select>';
+                    break;
+                    
+                case 'grammar':
+                case 'vocabulary':
+                case 'reading':
+                case 'writing':
+                case 'listening':
+                    fieldsHTML += '<select id="gradeLevel" class="form-input" style="margin-bottom: 15px;"><option value="1st">الصف الأول</option><option value="2nd">الصف الثاني</option><option value="3rd">الصف الثالث</option></select>';
+                    fieldsHTML += '<input type="text" id="unit" class="form-input" placeholder="الوحدة" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<textarea id="objectives" class="form-input" rows="3" placeholder="الأهداف" style="margin-bottom: 15px;"></textarea>';
+                    break;
+                    
+                case 'student-work':
+                case 'project':
+                case 'presentation':
+                    fieldsHTML += '<input type="text" id="studentName" class="form-input" placeholder="اسم الطالبة" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<select id="studentGrade" class="form-input" style="margin-bottom: 15px;"><option value="1st">الصف الأول الثانوي</option><option value="2nd">الصف الثاني الثانوي</option><option value="3rd">الصف الثالث الثانوي</option></select>';
+                    fieldsHTML += '<input type="number" id="score" class="form-input" placeholder="الدرجة (من 100)" min="0" max="100" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<textarea id="workDescription" class="form-input" rows="3" placeholder="وصف العمل" style="margin-bottom: 15px;"></textarea>';
+                    break;
+                    
+                case 'new-student':
+                    fieldsHTML += '<input type="text" id="studentName" class="form-input" placeholder="اسم الطالبة" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<select id="studentGrade" class="form-input" style="margin-bottom: 15px;"><option value="1st">الصف الأول الثانوي</option><option value="2nd">الصف الثاني الثانوي</option><option value="3rd">الصف الثالث الثانوي</option></select>';
+                    fieldsHTML += '<select id="listeningLevel" class="form-input" style="margin-bottom: 15px;"><option value="متفوق">متفوق</option><option value="متقدم">متقدم</option><option value="متمكن">متمكن</option><option value="مبتدئ">مبتدئ</option></select>';
+                    fieldsHTML += '<select id="speakingLevel" class="form-input" style="margin-bottom: 15px;"><option value="متفوق">متفوق</option><option value="متقدم">متقدم</option><option value="متمكن">متمكن</option><option value="مبتدئ">مبتدئ</option></select>';
+                    fieldsHTML += '<select id="readingLevel" class="form-input" style="margin-bottom: 15px;"><option value="متفوق">متفوق</option><option value="متقدم">متقدم</option><option value="متمكن">متمكن</option><option value="مبتدئ">مبتدئ</option></select>';
+                    fieldsHTML += '<select id="writingLevel" class="form-input" style="margin-bottom: 15px;"><option value="متفوق">متفوق</option><option value="متقدم">متقدم</option><option value="متمكن">متمكن</option><option value="مبتدئ">مبتدئ</option></select>';
+                    break;
+                    
+                case 'new-week':
+                    fieldsHTML += '<input type="text" id="weekNumber" class="form-input" placeholder="رقم الأسبوع" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<input type="date" id="startDate" class="form-input" placeholder="تاريخ البداية" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<input type="date" id="endDate" class="form-input" placeholder="تاريخ النهاية" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<input type="text" id="mainTopic" class="form-input" placeholder="الموضوع الرئيسي" style="margin-bottom: 15px;">';
+                    break;
+                    
+                case 'lesson-plan':
+                    fieldsHTML += '<select id="dayOfWeek" class="form-input" style="margin-bottom: 15px;"><option value="sunday">الأحد</option><option value="monday">الاثنين</option><option value="tuesday">الثلاثاء</option><option value="wednesday">الأربعاء</option><option value="thursday">الخميس</option></select>';
+                    fieldsHTML += '<input type="text" id="lessonTopic" class="form-input" placeholder="موضوع الدرس" style="margin-bottom: 15px;">';
+                    fieldsHTML += '<textarea id="objectives" class="form-input" rows="2" placeholder="الأهداف" style="margin-bottom: 15px;"></textarea>';
+                    fieldsHTML += '<textarea id="activities" class="form-input" rows="2" placeholder="الأنشطة" style="margin-bottom: 15px;"></textarea>';
+                    break;
+                    
+                case 'class-period':
+                    fieldsHTML += '<select id="dayOfWeek" class="form-input" style="margin-bottom: 15px;"><option value="sunday">الأحد</option><option value="monday">الاثنين</option><option value="tuesday">الثلاثاء</option><option value="wednesday">الأربعاء</option><option value="thursday">الخميس</option></select>';
+                    fieldsHTML += '<select id="periodNumber" class="form-input" style="margin-bottom: 15px;"><option value="1">الحصة الأولى</option><option value="2">الحصة الثانية</option><option value="3">الحصة الثالثة</option><option value="4">الحصة الرابعة</option><option value="5">الحصة الخامسة</option><option value="6">الحصة السادسة</option></select>';
+                    fieldsHTML += '<select id="classGrade" class="form-input" style="margin-bottom: 15px;"><option value="1st">الصف الأول الثانوي</option><option value="2nd">الصف الثاني الثانوي</option><option value="3rd">الصف الثالث الثانوي</option></select>';
+                    fieldsHTML += '<input type="text" id="subject" class="form-input" placeholder="المادة" value="English" style="margin-bottom: 15px;">';
+                    break;
+                    
+                default:
+                    fieldsHTML += '<textarea id="description" class="form-input" rows="3" placeholder="الوصف" style="margin-bottom: 15px;"></textarea>';
+            }
+            
+            dynamicFields.innerHTML = fieldsHTML;
+        }
+
+        // Edit mode function
+        function editMode() {
+            if (!isLoggedIn) {
+                showErrorMessage('يجب تسجيل الدخول أولاً');
+                return;
+            }
+            
+            editModeActive = !editModeActive;
+            
+            if (editModeActive) {
+                // Add edit buttons to all content
+                addEditButtons();
+                showSuccessMessage('تم تفعيل وضع التعديل - انقر على أي محتوى لتعديله');
+            } else {
+                // Remove edit buttons
+                removeEditButtons();
+                showSuccessMessage('تم إلغاء وضع التعديل');
+            }
+        }
+
+        // Delete content function
+        function deleteContent() {
+            if (!isLoggedIn) {
+                showErrorMessage('يجب تسجيل الدخول أولاً');
+                return;
+            }
+            
+            deleteModeActive = !deleteModeActive;
+            
+            if (deleteModeActive) {
+                // Add delete buttons to all content
+                addDeleteButtons();
+                showSuccessMessage('تم تفعيل وضع الحذف - انقر على أي محتوى لحذفه');
+            } else {
+                // Remove delete buttons
+                removeDeleteButtons();
+                showSuccessMessage('تم إلغاء وضع الحذف');
+            }
+        }
+
+        // Add edit buttons to content
+        function addEditButtons() {
+            const contentCards = document.querySelectorAll('.content-card, .bg-gradient-to-r, .bg-gradient-to-br, .bg-white, .grid > div, .space-y-6 > div, .flex.items-center.space-x-4');
+            contentCards.forEach((card, index) => {
+                if (!card.querySelector('.edit-btn') && card.offsetParent !== null) {
+                    const editBtn = document.createElement('button');
+                    editBtn.className = 'edit-btn';
+                    editBtn.style.cssText = 'position: absolute; top: 5px; right: 5px; background: #3b82f6; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.3);';
+                    editBtn.innerHTML = '✏️ تعديل';
+                    editBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        editContentItem(card, index);
+                    };
+                    
+                    card.style.position = 'relative';
+                    card.appendChild(editBtn);
+                }
+            });
+        }
+
+        // Add delete buttons to content
+        function addDeleteButtons() {
+            const contentCards = document.querySelectorAll('.content-card, .bg-gradient-to-r, .bg-gradient-to-br, .bg-white, .grid > div, .space-y-6 > div, .flex.items-center.space-x-4');
+            contentCards.forEach((card, index) => {
+                if (!card.querySelector('.delete-btn') && card.offsetParent !== null) {
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.style.cssText = 'position: absolute; top: 5px; left: 5px; background: #ef4444; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.3);';
+                    deleteBtn.innerHTML = '🗑️ حذف';
+                    deleteBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        deleteContentItem(card, index);
+                    };
+                    
+                    card.style.position = 'relative';
+                    card.appendChild(deleteBtn);
+                }
+            });
+        }
+
+        // Remove edit buttons
+        function removeEditButtons() {
+            const editBtns = document.querySelectorAll('.edit-btn');
+            editBtns.forEach(btn => btn.remove());
+        }
+
+        // Remove delete buttons
+        function removeDeleteButtons() {
+            const deleteBtns = document.querySelectorAll('.delete-btn');
+            deleteBtns.forEach(btn => btn.remove());
+        }
+
+        // Edit content item
+        function editContentItem(card, index) {
+            const title = card.querySelector('h3, h2, h4, h5, .font-bold');
+            const description = card.querySelector('p:not(.text-sm):not(.font-bold), .text-gray-600, .text-gray-700');
+            
+            const currentTitle = title ? title.textContent.trim() : '';
+            const currentDesc = description ? description.textContent.trim() : '';
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: #1f2937; font-size: 24px; font-weight: bold;">✏️ تعديل المحتوى</h3>
+                    <input type="text" id="editTitle" class="form-input" value="${currentTitle.replace(/"/g, '&quot;')}" placeholder="العنوان" style="margin-bottom: 15px;">
+                    <textarea id="editDescription" class="form-input" rows="4" placeholder="الوصف" style="margin-bottom: 20px;">${currentDesc.replace(/"/g, '&quot;')}</textarea>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="saveEditedContent(${index})" class="btn-primary" style="flex: 1;">حفظ التعديلات</button>
+                        <button onclick="closeModal()" style="flex: 1; background: #ef4444; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">إلغاء</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Delete content item
+        function deleteContentItem(card, index) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: #ef4444; font-size: 24px; font-weight: bold;">🗑️ تأكيد الحذف</h3>
+                    <p style="text-align: center; margin-bottom: 20px; color: #374151; font-size: 16px;">هل أنت متأكد من حذف هذا المحتوى؟ لا يمكن التراجع عن هذا الإجراء.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="confirmDelete(${index})" style="flex: 1; background: #ef4444; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">نعم، احذف</button>
+                        <button onclick="closeModal()" class="btn-primary" style="flex: 1;">إلغاء</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Save new content
+        function saveNewContent() {
+            const sectionType = document.getElementById('sectionType').value;
+            const contentType = document.getElementById('contentType').value;
+            const title = document.getElementById('contentTitle').value;
+            
+            if (!sectionType || !contentType || !title) {
+                showErrorMessage('يرجى ملء الحقول المطلوبة');
+                return;
+            }
+            
+            // Collect all form data
+            const formData = {
+                sectionType,
+                contentType,
+                title
+            };
+            
+            // Collect additional fields based on content type
+            const additionalFields = ['institution', 'achievementDate', 'description', 'email', 'phone', 'priority', 
+                                    'gradeLevel', 'unit', 'objectives', 'studentName', 'studentGrade', 'score', 
+                                    'workDescription', 'listeningLevel', 'speakingLevel', 'readingLevel', 'writingLevel',
+                                    'weekNumber', 'startDate', 'endDate', 'mainTopic', 'dayOfWeek', 'lessonTopic', 
+                                    'activities', 'periodNumber', 'classGrade', 'subject'];
+            
+            additionalFields.forEach(field => {
+                const element = document.getElementById(field);
+                if (element && element.value) {
+                    formData[field] = element.value;
+                }
+            });
+            
+            // Create content based on section type
+            switch(sectionType) {
+                case 'biography':
+                    addToBiography(formData);
+                    break;
+                case 'vision':
+                    addToVision(formData);
+                    break;
+                case 'worksheets':
+                    addToWorksheets(formData);
+                    break;
+                case 'students':
+                    addToStudents(formData);
+                    break;
+                case 'tracking':
+                    addToTracking(formData);
+                    break;
+                case 'weekly-plans':
+                    addToWeeklyPlans(formData);
+                    break;
+                case 'schedule':
+                    addToSchedule(formData);
+                    break;
+            }
+            
+            closeModal();
+            showSuccessMessage('تم إضافة المحتوى بنجاح!');
+        }
+
+        // Add to biography section
+        function addToBiography(data) {
+            const targetSection = document.querySelector('#biography .content-card');
+            let newContent;
+            
+            if (data.contentType === 'qualification' || data.contentType === 'achievement' || data.contentType === 'experience') {
+                const qualificationsGrid = targetSection.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.gap-4');
+                if (qualificationsGrid) {
+                    newContent = document.createElement('div');
+                    newContent.className = 'flex items-center space-x-3 space-x-reverse';
+                    newContent.innerHTML = `
+                        <span class="text-2xl">🏆</span>
+                        <span class="text-gray-700 font-semibold">${data.title} - ${data.institution || ''}</span>
+                    `;
+                    qualificationsGrid.appendChild(newContent);
+                }
+            } else if (data.contentType === 'contact-info') {
+                const contactGrid = targetSection.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.gap-8');
+                if (contactGrid) {
+                    newContent = document.createElement('div');
+                    newContent.className = 'flex items-center space-x-4 space-x-reverse';
+                    newContent.innerHTML = `
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <span class="text-2xl">📞</span>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">${data.title}</p>
+                            <p class="font-bold text-lg">${data.email || data.phone || ''}</p>
+                        </div>
+                    `;
+                    contactGrid.appendChild(newContent);
+                }
+            }
+        }
+
+        // Add to vision section
+        function addToVision(data) {
+            const targetSection = document.querySelector('#vision .content-card');
+            const goalsGrid = targetSection.querySelector('.grid.grid-cols-1.md\\:grid-cols-3.gap-4');
+            
+            if (goalsGrid) {
+                const newContent = document.createElement('div');
+                const priorityColors = {
+                    'high': 'pink-500',
+                    'medium': 'purple-500',
+                    'low': 'rose-500'
+                };
+                const color = priorityColors[data.priority] || 'indigo-500';
+                
+                newContent.className = `bg-white rounded-xl p-4 shadow-lg border-r-4 border-${color}`;
+                newContent.innerHTML = `
+                    <h5 class="font-bold text-${color.replace('-500', '-800')} mb-2">${data.title}</h5>
+                    <p class="text-gray-700 text-sm">${data.description || ''}</p>
+                `;
+                goalsGrid.appendChild(newContent);
+            }
+        }
+
+        // Add to worksheets section
+        function addToWorksheets(data) {
+            const targetSection = document.querySelector('#worksheets .grid');
+            const colors = ['pink', 'purple', 'rose', 'indigo', 'blue'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            const newContent = document.createElement('div');
+            newContent.className = `bg-gradient-to-r from-${randomColor}-50 to-${randomColor}-100 rounded-xl p-6 border-r-4 border-${randomColor}-500`;
+            newContent.innerHTML = `
+                <h3 class="text-xl font-bold text-gray-800 mb-3">${data.title}</h3>
+                <p class="text-gray-600 mb-4">${data.objectives || 'ورقة عمل تفاعلية'} - ${data.gradeLevel || ''}</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-500">📅 ${new Date().toLocaleDateString('ar-SA')}</span>
+                    <button class="bg-${randomColor}-500 text-white px-4 py-2 rounded-lg hover:bg-${randomColor}-600 transition-colors">تحميل</button>
+                </div>
+            `;
+            targetSection.appendChild(newContent);
+        }
+
+        // Add to students section
+        function addToStudents(data) {
+            const targetSection = document.querySelector('#students .grid');
+            const colors = ['pink', 'purple', 'rose', 'indigo'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            const newContent = document.createElement('div');
+            newContent.className = `bg-white rounded-xl p-6 shadow-lg border-t-4 border-${randomColor}-500`;
+            newContent.innerHTML = `
+                <h3 class="text-xl font-bold text-gray-800 mb-3">${data.title}</h3>
+                <p class="text-gray-600 mb-3">الطالبة: ${data.studentName} - ${data.studentGrade}</p>
+                <p class="text-gray-700 mb-4">${data.workDescription || ''}</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-${randomColor}-600 font-semibold">الدرجة: ${data.score || 'غير محدد'}/100</span>
+                    <button class="bg-${randomColor}-500 text-white px-4 py-2 rounded-lg hover:bg-${randomColor}-600 transition-colors">عرض العمل</button>
+                </div>
+            `;
+            targetSection.appendChild(newContent);
+        }
+
+        // Add to tracking section
+        function addToTracking(data) {
+            if (data.contentType === 'new-student') {
+                const tableBody = document.querySelector('#tracking table tbody');
+                if (tableBody) {
+                    const newRow = document.createElement('tr');
+                    newRow.className = 'border-b hover:bg-gray-50';
+                    
+                    const getLevelClass = (level) => {
+                        const classes = {
+                            'متفوق': 'bg-pink-100 text-pink-800',
+                            'متقدم': 'bg-purple-100 text-purple-800',
+                            'متمكن': 'bg-rose-100 text-rose-800',
+                            'مبتدئ': 'bg-gray-100 text-gray-800'
+                        };
+                        return classes[level] || 'bg-gray-100 text-gray-800';
+                    };
+                    
+                    newRow.innerHTML = `
+                        <td class="p-4 font-semibold">${data.studentName}</td>
+                        <td class="p-4 text-center">${data.studentGrade}</td>
+                        <td class="p-4 text-center"><span class="${getLevelClass(data.listeningLevel)} px-3 py-1 rounded-full text-sm font-bold">${data.listeningLevel}</span></td>
+                        <td class="p-4 text-center"><span class="${getLevelClass(data.speakingLevel)} px-3 py-1 rounded-full text-sm font-bold">${data.speakingLevel}</span></td>
+                        <td class="p-4 text-center"><span class="${getLevelClass(data.readingLevel)} px-3 py-1 rounded-full text-sm font-bold">${data.readingLevel}</span></td>
+                        <td class="p-4 text-center"><span class="${getLevelClass(data.writingLevel)} px-3 py-1 rounded-full text-sm font-bold">${data.writingLevel}</span></td>
+                        <td class="p-4 text-center"><span class="${getLevelClass(data.listeningLevel)} px-3 py-1 rounded-full text-sm font-bold">${data.listeningLevel}</span></td>
+                    `;
+                    tableBody.appendChild(newRow);
+                }
+            }
+        }
+
+        // Add to weekly plans section
+        function addToWeeklyPlans(data) {
+            const targetSection = document.querySelector('#weekly-plans .content-card');
+            
+            if (data.contentType === 'new-week') {
+                const newWeek = document.createElement('div');
+                newWeek.className = 'bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 mb-6';
+                newWeek.innerHTML = `
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">${data.title}</h3>
+                    <p class="text-gray-600 mb-4">من ${data.startDate} إلى ${data.endDate}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg p-4 border-r-4 border-green-500">
+                            <h4 class="font-bold text-green-800 mb-2">الموضوع الرئيسي</h4>
+                            <p class="text-sm text-gray-600">${data.mainTopic}</p>
+                        </div>
+                    </div>
+                `;
+                targetSection.appendChild(newWeek);
+            } else if (data.contentType === 'lesson-plan') {
+                // Add to existing week
+                const lastWeek = targetSection.querySelector('.bg-gradient-to-r:last-child .grid');
+                if (lastWeek) {
+                    const colors = ['pink', 'purple', 'rose', 'indigo', 'blue', 'green'];
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    const newLesson = document.createElement('div');
+                    newLesson.className = `bg-white rounded-lg p-4 border-r-4 border-${randomColor}-500`;
+                    newLesson.innerHTML = `
+                        <h4 class="font-bold text-${randomColor}-800 mb-2">${data.dayOfWeek} - ${data.title}</h4>
+                        <p class="text-sm text-gray-600">الهدف: ${data.objectives || ''}</p>
+                        <p class="text-sm text-gray-600">النشاط: ${data.activities || ''}</p>
+                    `;
+                    lastWeek.appendChild(newLesson);
+                }
+            }
+        }
+
+        // Add to schedule section
+        function addToSchedule(data) {
+            if (data.contentType === 'class-period') {
+                const table = document.querySelector('#schedule table tbody');
+                if (table) {
+                    const dayMap = {
+                        'sunday': 1,
+                        'monday': 2,
+                        'tuesday': 3,
+                        'wednesday': 4,
+                        'thursday': 5
+                    };
+                    
+                    const dayIndex = dayMap[data.dayOfWeek];
+                    const periodRow = table.children[parseInt(data.periodNumber) - 1];
+                    
+                    if (periodRow && dayIndex) {
+                        const cell = periodRow.children[dayIndex];
+                        if (cell) {
+                            cell.innerHTML = `${data.subject}<br><span class="text-sm text-pink-600">${data.classGrade}</span>`;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Save edited content
+        function saveEditedContent(index) {
+            const newTitle = document.getElementById('editTitle').value.trim();
+            const newDescription = document.getElementById('editDescription').value.trim();
+            
+            if (!newTitle || !newDescription) {
+                showErrorMessage('يرجى ملء جميع الحقول');
+                return;
+            }
+            
+            const contentCards = document.querySelectorAll('.content-card, .bg-gradient-to-r, .bg-gradient-to-br, .bg-white, .grid > div, .space-y-6 > div, .flex.items-center.space-x-4');
+            const card = contentCards[index];
+            
+            if (card && card.offsetParent !== null) {
+                const title = card.querySelector('h3, h2, h4, h5, .font-bold');
+                const description = card.querySelector('p:not(.text-sm):not(.font-bold), .text-gray-600, .text-gray-700');
+                
+                if (title) {
+                    title.textContent = newTitle;
+                }
+                if (description) {
+                    description.textContent = newDescription;
+                }
+            }
+            
+            closeModal();
+            showSuccessMessage('تم حفظ التعديلات بنجاح!');
+        }
+
+        // Confirm delete
+        function confirmDelete(index) {
+            const contentCards = document.querySelectorAll('.content-card, .bg-gradient-to-r, .bg-gradient-to-br, .bg-white, .grid > div, .space-y-6 > div, .flex.items-center.space-x-4');
+            const card = contentCards[index];
+            
+            if (card && card.parentNode && card.offsetParent !== null) {
+                card.style.animation = 'fadeOut 0.5s ease-out';
+                setTimeout(() => {
+                    card.remove();
+                    showSuccessMessage('تم حذف المحتوى بنجاح!');
+                }, 500);
+            }
+            
+            closeModal();
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.querySelector('.modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        // Export data function
+        function exportData() {
+            if (!isLoggedIn) {
+                showErrorMessage('يجب تسجيل الدخول أولاً');
+                return;
+            }
+            
+            const data = {
+                teacherName: 'ابتسام الحربي',
+                school: 'مدرسة الثامنة الابتدائية للبنات',
+                exportDate: new Date().toLocaleDateString('ar-SA')
+            };
+            
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'ملف_انجاز_ابتسام_الحربي.json';
+            link.click();
+            
+            URL.revokeObjectURL(url);
+            showSuccessMessage('تم تصدير البيانات بنجاح!');
+        }
+
+        // Send message function
+        function sendMessage(event) {
+            event.preventDefault();
+            showSuccessMessage('تم إرسال رسالتك بنجاح! سيتم الرد عليك قريباً.');
+            event.target.reset();
+        }
+
+        // Show success message
+        function showSuccessMessage(message) {
+            const successMsg = document.createElement('div');
+            successMsg.className = 'success-message';
+            successMsg.innerHTML = `✅ ${message}`;
+            document.body.appendChild(successMsg);
+            
+            setTimeout(() => {
+                if (successMsg.parentNode) {
+                    successMsg.remove();
+                }
+            }, 3000);
+        }
+
+        // Show error message
+        function showErrorMessage(message) {
+            const errorMsg = document.createElement('div');
+            errorMsg.className = 'error-message';
+            errorMsg.innerHTML = `❌ ${message}`;
+            document.body.appendChild(errorMsg);
+            
+            setTimeout(() => {
+                if (errorMsg.parentNode) {
+                    errorMsg.remove();
+                }
+            }, 3000);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show biography section by default
+            showSection('biography');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a7049c60ba78ad',t:'MTc1NDQwNDQ5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
